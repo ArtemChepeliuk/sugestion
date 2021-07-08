@@ -88,7 +88,7 @@ function createsuggestion(x, y, arr) {
   suggestionWrapper.setAttribute('id', 'suggestion');
   console.log(x);
   console.log(y);
-  suggestionWrapper.style.cssText += 'position:fixed;left:0;top:0;background-color:gray;border:1px solid #000;padding:10px 20px;margin:0';
+  suggestionWrapper.style.cssText += 'position:fixed;left:0;top:0;background-color:gray;border:1px solid #000;padding:10px 20px;margin:0;z-index:99999';
   suggestionWrapper.style.cssText += 'left:' + x + 'px; top:' + y + 'px';
   document.body.append(suggestionWrapper);
 
