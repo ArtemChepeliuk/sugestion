@@ -5,6 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Google extention</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
   <style>
 
 input,textarea{
@@ -17,6 +20,7 @@ input,textarea{
   outline: none;
   padding: 0 20px;
   font-size: 16px;
+  border: 1px solid black;
 }
 
 
@@ -26,31 +30,37 @@ textarea{
 }
 
 
-input::before{
-  content: '';
-  display: block;
-  width: 100px;
-  height: 100px;
-  background-color: red;
-}
-.sugestion{
+
+.suggestion{
   position: fixed;
   left: 0;
   top: 0;
-  width: 100px;
-  height: 100px;
-  background-color: yellowgreen;
+  background-color: gray;
+  border: 1px solid black;
+  padding: 10px 20px;
+  margin: 0;
+
 }
+.suggestion li{
+  
+  margin: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+}
+
+
   </style>
 
 </head>
+
 <body>
 
   <h1>hello</h1>
 
-<div id="two">
-  asd
-</div>
+
   <input type="text" id="one">
   <input type="text">
   <input type="text">
