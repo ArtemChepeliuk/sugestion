@@ -13,53 +13,10 @@ function spacePress(focusInput, arr) {
 }
 
 
-// document.body.onkeyup = function (e) {
-//   let inp = document.querySelector(":focus"),
-//     inpVal = inp.value;
-//   if (e.keyCode == 32) {
-//     let word = inpVal.match(/(\w+\s)$/);
-//     word = word[word.length - 1];
-//     switch (word) {
-//       case 'Cat ':
-//         arr = cat;
-//         spacePress(inp, arr);
-//         break;
-//       case 'Helo ':
-//         arr = hello;
-//         spacePress(inp, arr);
-//         break;
-//       case 'helpd ':
-//         arr = helpd;
-//         spacePress(inp, arr);
-//         break;
-//     }
-//   } else if (e.keyCode == 27) {
-//     removesuggestion();
-//   }
-
-//   let suggestionValueEl = document.querySelectorAll('.suggestion li');
-//   if (suggestionValueEl && inpVal) {
-//     suggestionValueEl.forEach(function (e) {
-//       e.addEventListener('click', function () {
-
-//         let suggestionValue = this.innerText;
-//         console.log(suggestionValue);
-//         console.log(document.querySelector(":focus"));
-//         console.log(inpVal);
-//       });
-//     });
-//   }
-// };
-
-let input = document.querySelector('input');
-
-input.addEventListener("focusin", () => input.classList.add('active_inp'));
-input.addEventListener('focusout', () =>  input.classList.remove('active_inp'));
-
 document.body.onkeyup = function (e) {
   let inp = document.querySelector(":focus"),
     inpVal = inp.value;
-   
+  inp.classList.add('active_input');
   if (e.keyCode == 32) {
     let word = inpVal.match(/(\w+\s)$/);
     word = word[word.length - 1];
@@ -82,18 +39,23 @@ document.body.onkeyup = function (e) {
   }
 
   let suggestionValueEl = document.querySelectorAll('.suggestion li');
+
+
   if (suggestionValueEl && inpVal) {
+
     suggestionValueEl.forEach(function (e) {
+
       e.addEventListener('click', function () {
-        
+
         let suggestionValue = this.innerText,
-            activeInp = document.querySelector(".active_inp");
+          activeInp = document.querySelector('.active_input'),
+          activeInpVal = activeInp.value;
 
-        console.log(suggestionValue);
-        console.log(activeInp);
-        console.log(inpVal);
-        
+        activeInpVal = activeInpVal.replace(/[\W]*\S+[\W]*$/, '');
 
+        activeInp.value = activeInpVal + ' ' + suggestionValue;
+       
+        removesuggestion();
       });
     });
   }
@@ -102,6 +64,7 @@ document.body.onkeyup = function (e) {
 
 
 function removesuggestion() {
+  document.querySelector('.active_input').classList.remove('active_input');
   document.getElementById('suggestion').remove();
 }
 
@@ -120,7 +83,6 @@ function createsuggestion(x, y, arr) {
   suggestionWrapper.setAttribute('id', 'suggestion');
   suggestionWrapper.style.cssText += 'left:' + x + 'px; top:' + y + 'px';
   document.body.append(suggestionWrapper);
-
 
 
 }
