@@ -3,15 +3,15 @@
 	"name": "Chepeliuk test",
 	"description": "Hints",
 	"version": "1.0.0",
-	"icons": {"128": "icon_128.png"},
 	"content_scripts": [
 		{
 			"matches": [
 				"<all_urls>"
 			],
-			"js": ["script.js"]
+			"js": ["content.js"]
 		}
 	],
+
 	"browser_action": {
 		"default_icon": "icon.png"
 	}
