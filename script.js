@@ -95,7 +95,7 @@ function createsuggestion(x, y, arr) {
 
 }
 
-
+// переробити!!!
 function getCoords(elem) {
   let box = elem.getBoundingClientRect();
   return {
