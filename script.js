@@ -7,7 +7,7 @@ function spacePress(focusInput, arr) {
 
   let inputTop = getCoords(focusInput).top,
     inputLeft = getCoords(focusInput).left;
-  createsuggestion(inputLeft, inputTop + 50, arr);
+  createsuggestion(inputLeft, inputTop + 20, arr);
 }
 
 
@@ -93,14 +93,14 @@ function createsuggestion(x, y, arr) {
 
     const element = arr[index];
     let suggestionText = document.createElement('li');
-    suggestionText.style.cssText += 'margin:10px 0;font-size:16px;font-weight:500;color:#fff;font-family:sans-serif;cursor:pointer';
+    suggestionText.style.cssText += 'margin:5px 0;font-size:16px;font-weight:500;color:#fff;font-family:sans-serif;cursor:pointer';
     suggestionText.innerHTML = element;
     suggestionWrapper.appendChild(suggestionText);
   }
 
   suggestionWrapper.classList.add('suggestion');
   suggestionWrapper.setAttribute('id', 'suggestion');
-  suggestionWrapper.style.cssText += 'position:fixed;left:0;top:0;background-color:gray;border:1px solid #000;padding:10px 20px;margin:0;z-index:99999';
+  suggestionWrapper.style.cssText += 'position:fixed;left:0;top:0;background-color:gray;border:1px solid #000;padding:5px 20px;margin:0;z-index:99999';
   suggestionWrapper.style.cssText += 'left:' + x + 'px; top:' + y + 'px';
   document.body.append(suggestionWrapper);
 
