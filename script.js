@@ -4,36 +4,28 @@ const cat = ['Dog', 'Rat', 'bat'],
 
 
 function spacePress(focusInput, arr) {
-
   let inputTop = getCoords(focusInput).top,
     inputLeft = getCoords(focusInput).left;
   createsuggestion(inputLeft, inputTop + 20, arr);
 }
 
 
-document.body.onkeyup = e => {
+document.body.onkeyup = function(e) {
   let inp = e.target;
-
-
   if (!inp) return;
-
-
   let inpVal = inp.value;
-
-
   if (!['INPUT', 'TEXTAREA'].includes(inp.tagName)) {
     inpVal = inp.innerText;
   } else {
     inpVal = inp.value;
   }
-
-  removesuggestion();
   if (e.keyCode == 32) {
+    removesuggestion();
 
     word = inpVal.match(/(\w+\s+)$/);
 
     if (!word) return;
-    // word = word.replace(/(\s)/, '');
+    word = word[0].replace(/(\s)/, '');
 
     switch (word) {
       case 'Cat':
@@ -65,7 +57,6 @@ document.body.onkeyup = e => {
 
         let suggestionValue = this.innerText;
 
-
         if (!['INPUT', 'TEXTAREA'].includes(inp.tagName)) {
           inp.innerText = inpVal.replace(word, suggestionValue) + ' ';
         } else {
@@ -79,11 +70,11 @@ document.body.onkeyup = e => {
 };
 
 function removesuggestion() {
-  if (document.getElementById('suggestion')) {
-    document.getElementById('suggestion').remove();
-  }
+  // if (document.getElementById('suggestion')) {
+  //   document.getElementById('suggestion').remove();
+  // }
 
-
+console.log(document.getElementById('suggestion'));
 }
 
 function createsuggestion(x, y, arr) {
@@ -104,7 +95,7 @@ function createsuggestion(x, y, arr) {
   suggestionWrapper.style.cssText += 'left:' + x + 'px; top:' + y + 'px';
   document.body.append(suggestionWrapper);
 
-
+  console.log(document.getElementById('suggestion'));
 }
 
 function getCoords(elem) {
@@ -115,3 +106,5 @@ function getCoords(elem) {
     top: box.top
   };
 }
+
+console.log('111');
