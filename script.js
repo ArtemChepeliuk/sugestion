@@ -6,11 +6,12 @@ const cat = ['Dog', 'Rat', 'bat'],
 function spacePress(focusInput, arr) {
   let inputTop = getCoords(focusInput).top,
     inputLeft = getCoords(focusInput).left;
-  createsuggestion(inputLeft, inputTop + 20, arr);
+
+  createsuggestion(inputLeft, inputTop + 35, arr);
 }
 
 
-document.body.onkeyup = function(e) {
+document.body.onkeyup = e => {
   let inp = e.target;
   if (!inp) return;
   let inpVal = inp.value;
@@ -22,11 +23,11 @@ document.body.onkeyup = function(e) {
   if (e.keyCode == 32) {
     removesuggestion();
 
-    word = inpVal.match(/(\w+\s+)$/);
+   word = inpVal.match(/(\w+\s+)$/);
 
     if (!word) return;
     word = word[0].replace(/(\s)/, '');
-
+    
     switch (word) {
       case 'Cat':
         arr = cat;
@@ -70,11 +71,9 @@ document.body.onkeyup = function(e) {
 };
 
 function removesuggestion() {
-  // if (document.getElementById('suggestion')) {
-  //   document.getElementById('suggestion').remove();
-  // }
-
-console.log(document.getElementById('suggestion'));
+  if (document.getElementById('suggestion')) {
+    document.getElementById('suggestion').remove();
+  }
 }
 
 function createsuggestion(x, y, arr) {
@@ -92,10 +91,9 @@ function createsuggestion(x, y, arr) {
   suggestionWrapper.classList.add('suggestion');
   suggestionWrapper.setAttribute('id', 'suggestion');
   suggestionWrapper.style.cssText += 'position:fixed;left:0;top:0;background-color:gray;border:1px solid #000;padding:5px 20px;margin:0;z-index:99999';
-  suggestionWrapper.style.cssText += 'left:' + x + 'px; top:' + y + 'px';
+  suggestionWrapper.style.cssText += `left: ${x}px; top: ${y}px`;
   document.body.append(suggestionWrapper);
 
-  console.log(document.getElementById('suggestion'));
 }
 
 function getCoords(elem) {
@@ -105,6 +103,7 @@ function getCoords(elem) {
     left: box.left,
     top: box.top
   };
+
 }
 
-console.log('111');
+
