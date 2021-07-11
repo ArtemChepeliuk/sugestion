@@ -1,5 +1,5 @@
-document.addEventListener('DOMNodeInserted', function(){
-const cat = ['Dog', 'Rat', 'bat'],
+// document.addEventListener('DOMNodeInserted', function(){
+  const cat = ['Dog', 'Rat', 'bat'],
   hello = ['hello', 'Help', 'Hell'],
   helpd = ['help', 'held', 'hello'];
 
@@ -25,10 +25,8 @@ document.body.onkeyup = e => {
     removesuggestion();
 
    word = inpVal.match(/(\w+\s+)$/);
-
     if (!word) return;
     word = word[0].replace(/(\s)/, '');
-    
     switch (word) {
       case 'Cat':
         arr = cat;
@@ -54,15 +52,13 @@ document.body.onkeyup = e => {
   if (suggestionValueEl && inpVal) {
 
     suggestionValueEl.forEach(function (e) {
-
       e.addEventListener('click', function () {
-
         let suggestionValue = this.innerText;
-
         if (!['INPUT', 'TEXTAREA'].includes(inp.tagName)) {
-          inp.innerText = inpVal.replace(word, suggestionValue) + ' ';
+          inp.innerText = inpVal.replace(word, suggestionValue);
         } else {
-          inp.value = inpVal.replace(word, suggestionValue) + ' ';
+          
+          inp.value = inpVal.replace(word, suggestionValue);
         }
         inp.focus();
         removesuggestion();
@@ -107,5 +103,5 @@ function getCoords(elem) {
 
 }
 
-}, false);
 
+// }, false);
