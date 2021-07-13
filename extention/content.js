@@ -1,6 +1,3 @@
-// document.addEventListener('DOMNodeInserted', function(){
-
-
   const cat = ['Dog', 'Rat', 'bat'],
   hello = ['hello', 'Help', 'Hell'],
   helpd = ['help', 'held', 'hello'];
@@ -91,12 +88,6 @@ document.body.onkeyup = e => {
 
         if (!['INPUT', 'TEXTAREA'].includes(inp.tagName)) {
 
-         console.log(inpVal, ' 2 nodevalue');
-         
-         console.log(inp, ' inp');
-         console.log(suggestionValue, ' suggestionValue');
-         console.log(restOfVal, ' restOfVal');
-
          inpFocus.nodeValue = inpVal.replace(/(\w+\s+)$/, suggestionValue + ' ' )  + restOfVal;
 
           let range = document.createRange();
@@ -163,7 +154,3 @@ function getCoords(elem) {
   };
 
 }
-
-console.log('asd');
-
-// }, false);
